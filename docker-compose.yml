@@ -1,13 +1,32 @@
 version: '3.8'
 
 services:
-  web:
-    build: .
+  backend1:
+    image: your-backend-image
     ports:
-      - "5003:5003"
+      - "5004:5004"  # Expose container's port 5004 to the host's port 5004
+
+  backend2:
+    image: your-backend-image
+    ports:
+      - "5005:5005"  # Expose container's port 5005 to the host's port 5005
+
+  backend3:
+    image: your-backend-image
+    ports:
+      - "5006:5006"  # Expose container's port 5006 to the host's port 5006
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "5003:5003"  # Expose Nginx on the host's port 5003
     volumes:
-      - .:/usr/share/nginx/html
-    container_name: sample3
+      - ./nginx.conf:/etc/nginx/nginx.conf  # Map your Nginx configuration file
+    depends_on:
+      - backend1
+      - backend2
+      - backend3
+
     networks:
       - webnet
 
