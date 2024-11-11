@@ -4,7 +4,6 @@ services:
   web:
     build: .
     ports:
-      - "5003:5003"
       - "5004:5003"
       - "5005:5003"
     volumes:
@@ -12,6 +11,20 @@ services:
     container_name: sample3
     networks:
       - webnet
+    deploy:
+      replicas: 2  # Number of web service instances
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_load_balancer
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "5003:5003"  # Expose Nginx on port 5003
+    networks:
+      - webnet
+    depends_on:
+      - web
 
 networks:
   webnet:
