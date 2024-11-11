@@ -7,7 +7,7 @@ services:
       - "5003:5003"
     volumes:
       - .:/usr/share/nginx/html
-    container_name: sample2
+    container_name: sample3
     networks:
       - webnet
 
