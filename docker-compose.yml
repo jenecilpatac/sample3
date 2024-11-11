@@ -2,17 +2,17 @@ version: '3.8'
 
 services:
   backend1:
-    image: your-backend-image
+    image: backend1
     ports:
       - "5004:5004"  # Expose container's port 5004 to the host's port 5004
 
   backend2:
-    image: your-backend-image
+    image: backend2
     ports:
       - "5005:5005"  # Expose container's port 5005 to the host's port 5005
 
   backend3:
-    image: your-backend-image
+    image: backend3
     ports:
       - "5006:5006"  # Expose container's port 5006 to the host's port 5006
 
