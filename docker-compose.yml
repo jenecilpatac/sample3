@@ -2,7 +2,7 @@ version: "3"
 
 services:
   app1:
-    build: app
+    build: .
     container_name: app1
     volumes:
       - ./sample3:/sample3
@@ -10,7 +10,7 @@ services:
       - "5004:5003"
   
   app2:
-    build: app
+    build: .
     container_name: app2
     volumes:
       - ./sample3:/sample3
@@ -18,7 +18,7 @@ services:
       - "5005:5003"
 
   app3:
-    build: app
+    build: .
     container_name: app3
     volumes:
       - ./sample3:/sample3
