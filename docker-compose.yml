@@ -1,30 +1,33 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  web:
-    build: .
-    expose:
-      - "5004"  # Expose the container port (no direct mapping to host port)
-      - "5005"  # Expose another container port
-    volumes:
-      - .:/usr/share/nginx/html
+  app1:
+    build:
+      context: .
+    container_name: app1
     networks:
-      - webnet
-    deploy:
-      replicas: 2  # Number of web service instances
+      - app-network
+
+  app2:
+    build:
+      context: .
+    container_name: app2
+    networks:
+      - app-network
 
   nginx:
     image: nginx:latest
-    container_name: nginx_load_balancer
+    container_name: nginx
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
-      - "5003:5003"  # Expose Nginx on port 5003
+      - "80:80"
     networks:
-      - webnet
+      - app-network
     depends_on:
-      - web
+      - app1
+      - app2
 
 networks:
-  webnet:
+  app-network:
     driver: bridge
