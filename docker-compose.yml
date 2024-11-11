@@ -1,13 +1,27 @@
 version: '3.8'
 
 services:
-  web:
-    build: .
-    ports:
-      - "5003:5003"
+  # Backend Web Server 1
+  web1:
+    build:
+      context: .
+    networks:
+      - webnet
+
+  # Backend Web Server 2
+  web2:
+    build:
+      context: .
+    networks:
+      - webnet
+
+  # Nginx Load Balancer
+  nginx:
+    image: nginx:latest  # Use the official Nginx image from Docker Hub
     volumes:
-      - .:/usr/share/nginx/html
-    container_name: sample3
+      - ./nginx.conf:/etc/nginx/nginx.conf  # Mount your custom Nginx configuration file
+    ports:
+      - "5003:5003"  # Expose port 8080 on host to access the load balancer
     networks:
       - webnet
 
