@@ -1,25 +1,13 @@
 version: "3.8"
 
 services:
-  app1:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: app1
-    expose:
-      - "5003"  # Expose the application port for internal network use
-    networks:
-      - app-network
-
-  app2:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: app2
-    expose:
-      - "5003"  # Expose the application port for internal network use
-    networks:
-      - app-network
+    container_name: app
+    deploy:
+      replicas: 2
 
   nginx:
     image: nginx:latest
