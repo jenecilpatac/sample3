@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     deploy:
       replicas: 2
+    networks:
+      - app-network
 
   nginx:
     image: nginx:latest
