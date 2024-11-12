@@ -8,7 +8,7 @@ FROM nginx:alpine
 COPY index.html /usr/share/nginx/html/index.html
 
 # Expose port 5003
-EXPOSE 80
+EXPOSE 5003
 
 # Start NGINX
 CMD ["nginx", "-g", "daemon off;"]

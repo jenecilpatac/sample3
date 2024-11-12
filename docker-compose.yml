@@ -7,7 +7,7 @@ services:
     networks:
       - web-network
     expose:
-      - "80"  # Expose port 80 for the NGINX load balancer to access
+      - "5003"  # Expose port 80 for the NGINX load balancer to access
     deploy:
       replicas: 3  # Scale to 3 replicas of the HTML page service
 
@@ -16,7 +16,7 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf  # Mount the custom NGINX config
     ports:
-      - "80:80"  # Expose port 80 to the host
+      - "5003:80"  # Expose port 80 to the host
     networks:
       - web-network
 
