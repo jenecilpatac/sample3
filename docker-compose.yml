@@ -1,11 +1,13 @@
+version: '3.7'
+
 services:
   html-page:
     build:
-      context: .  # Build the HTML page from the Dockerfile
+      context: .  # Build the HTML page from the Dockerfile in the current directory
     networks:
       - web-network
     expose:
-      - "5003"  # Expose internally on port 5003
+      - "80"  # Expose port 80 for the NGINX load balancer to access
     deploy:
       replicas: 3  # Scale to 3 replicas of the HTML page service
 
@@ -14,7 +16,7 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf  # Mount the custom NGINX config
     ports:
-      - "5003:5003"  # Expose port 5003 on the host
+      - "5003:80"  # Expose port 5003 on the host, forwarding to port 80 on the container
     networks:
       - web-network
 

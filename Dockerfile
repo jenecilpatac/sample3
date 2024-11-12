@@ -11,7 +11,7 @@ COPY css /usr/share/nginx/html/css
 COPY assets /usr/share/nginx/html/assets
 
 # Expose port 80 (standard for HTTP)
-EXPOSE 5003
+EXPOSE 80
 
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
