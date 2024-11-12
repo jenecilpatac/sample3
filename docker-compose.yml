@@ -19,8 +19,7 @@ services:
     networks:
       - app-network
     depends_on:
-      - app1
-      - app2
+      - app
 
 networks:
   app-network:
