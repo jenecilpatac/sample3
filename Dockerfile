@@ -2,7 +2,7 @@
 FROM nginx:alpine
 
 # Copy the custom Nginx config to override the default
-COPY . .
+COPY html /usr/share/nginx/html
 
 
 # Expose port 5003
