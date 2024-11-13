@@ -8,8 +8,6 @@ services:
       - web-network
     expose:
       - "5003"  # Expose port 80 for the NGINX load balancer to access
-    environment:
-      - REPLICA_NAME=${HOSTNAME} 
     deploy:
       replicas: 3  # Scale to 3 replicas of the HTML page service
 
