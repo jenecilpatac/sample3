@@ -6,7 +6,6 @@ FROM nginx:alpine
 COPY default.conf /etc/nginx/conf.d/default.conf 
 # Copy the HTML file and the assets (JS, CSS, images) into the container
 COPY index.html /usr/share/nginx/html/index.html
-COPY hello.html /usr/share/nginx/html/hello.html
 COPY js /usr/share/nginx/html/js
 COPY css /usr/share/nginx/html/css
 COPY assets /usr/share/nginx/html/assets
