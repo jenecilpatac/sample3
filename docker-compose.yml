@@ -7,7 +7,7 @@ services:
     networks:
       - web-network
     expose:
-      - "80"  # Expose port 80 for the NGINX load balancer to access
+      - "5003"  # Expose port 80 for the NGINX load balancer to access
     environment:
       - REPLICA_NAME=${HOSTNAME} 
     deploy:
