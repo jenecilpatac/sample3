@@ -1,16 +1,29 @@
 version: '3.7'
 
 services:
-  html-page:
+  html-page1:
     build:
       context: .  # Build the HTML page from the Dockerfile in the current directory
     networks:
       - web-network
     expose:
       - "5003"  # Expose port 80 for the NGINX load balancer to access
-    deploy:
-      replicas: 3  # Scale to 3 replicas of the HTML page service
 
+  html-page2:
+    build:
+      context: .  # Build the HTML page from the Dockerfile in the current directory
+    networks:
+      - web-network
+    expose:
+      - "5003"  # Expose port 80 for the NGINX load balancer to access
+
+  html-page3:
+    build:
+      context: .  # Build the HTML page from the Dockerfile in the current directory
+    networks:
+      - web-network
+    expose:
+      - "5003"  # Expose port 80 for the NGINX load balancer to access  
   nginx:
     image: nginx:alpine  # Use the official NGINX image
     volumes:
