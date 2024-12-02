@@ -32,7 +32,6 @@ services:
       - /etc/ssl/private:/etc/ssl/private 
     ports:
       - "5003:5003"  # Expose port 5003 on the host, forwarding to port 5003 on the container
-      - "5003:5003"
     networks:
       - web-network
 
